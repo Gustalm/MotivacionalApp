@@ -1,3 +1,12 @@
 page-quotes {
+    p.author{
+        color: #ccc;
+        margin:0;
+        padding:0;
+        text-transform: uppercase;
+    }
 
+    .author:before{
+        content: '- ';
+    }
 }

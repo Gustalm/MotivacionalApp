@@ -15,10 +15,14 @@
       #{{ i+1 }}
     </ion-card-header>
     <ion-card-content>
-      <h3 class='quote-text'>{{ quote.text }}</h3>
-      <h4 text-right>{{ quote.person }}</h4>
-      <h4 text-right> Favorite </h4>
+      <p>{{ quote.text }}</p>
+      <p class="author" text-right>{{ quote.person }}</p>
     </ion-card-content>
+    <ion-row>
+      <ion-col text-right>
+        <button ion-button clear small (click)="onAddToFavorite(quote)">Favorite</button>
+      </ion-col>
+    </ion-row>
   </ion-card>
   <!--<button ion-item *ngFor="let quote of quotes; let i = index">
       <h2>{{ quote.person }}</h2>
