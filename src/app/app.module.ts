@@ -11,6 +11,7 @@ import { SettingsPage } from "../pages/settings/settings";
 import { QuotePage } from "../pages/quote/quote";
 import { QuotesPage } from "../pages/quotes/quotes";
 import { TabsPage } from "../pages/tabs/tabs";
+import { MaxLengthPipe } from "../pipes/maxlength.pipe";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TabsPage } from "../pages/tabs/tabs";
     SettingsPage,
     QuotePage,
     QuotesPage,
-    TabsPage
+    TabsPage,
+    MaxLengthPipe
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,7 @@ import { TabsPage } from "../pages/tabs/tabs";
     SettingsPage,
     QuotePage,
     QuotesPage,
-    TabsPage
+    TabsPage,
   ],
   providers: [
     StatusBar,
