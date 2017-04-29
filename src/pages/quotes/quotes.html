@@ -1,6 +1,11 @@
 <ion-header>
 
   <ion-navbar>
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
     <!--se eu usasse ionViewDidLoad, significaria que o template seria renderizado primeiro antes do ts pelo angular,ou seja, quoteGroup seria undefined, porém, com o ?, dizemos para o angular2 pular esse objeto, e só renderiza-lo quando estiver disponivel. awesome-->
     <ion-title>{{ quoteGroup.category | uppercase }}</ion-title>
   </ion-navbar>
@@ -22,7 +27,7 @@
       <ion-col text-right>
         <button ion-button clear small *ngIf="!isQuoteFavorite(quote); else buttonUnfav;" (click)="onAddToFavorite(quote)">Favorite</button>
         <ng-template #buttonUnfav>
-        <button  ion-button clear small color='danger' (click)="onUnfavorite(quote.id)">Unfavorite</button>
+          <button ion-button clear small color='danger' (click)="onUnfavorite(quote.id)">Unfavorite</button>
         </ng-template>
       </ion-col>
     </ion-row>

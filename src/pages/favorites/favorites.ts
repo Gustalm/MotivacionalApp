@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, MenuController } from 'ionic-angular';
 import { FavoriteQuotesService } from "../../services/quote.service";
 import { Quote } from "../../models/quote.interface";
 import { Subscription } from "rxjs/Subscription";
 import { QuotePage } from "../quote/quote";
+import { SettingsService } from "../../services/settings.service";
 
 @IonicPage()
 @Component({
@@ -18,8 +19,11 @@ export class FavoritesPage implements OnInit, OnDestroy {
     public navCtrl: NavController,
     public navParams: NavParams,
     private favoriteQuoteService: FavoriteQuotesService,
-    private modalCtrl: ModalController) {
+    private modalCtrl: ModalController,
+    private menuCtrl: MenuController,
+    private settingsService: SettingsService) {
   }
+  private changeBackground =  this.settingsService.getBackgroundCanChange();
 
   ngOnInit(): void {
     this.favoriteQuotes = this.favoriteQuoteService.getFavoriteQuotes();
@@ -27,7 +31,8 @@ export class FavoritesPage implements OnInit, OnDestroy {
     this.quoteSubscription = this.favoriteQuoteService.favoriteQuotesEmitter.subscribe((quotes: Quote[]) => {
       this.favoriteQuotes = quotes;
     })
-    console.log("ngOnInit");
+
+    console.log(this.changeBackground);
   }
 
   onViewQuote(quote: Quote) {
@@ -39,9 +44,13 @@ export class FavoritesPage implements OnInit, OnDestroy {
     quoteModal.present();
   }
 
-  unvaforiteQuote(id: string) {
+  unfavoriteQuote(id: string) {
     this.favoriteQuoteService.removeQuote(id);
   }
+// not necessary with directive menutoggle
+  // onOpenMenu(){
+  //   this.menuCtrl.open();
+  // }
 
   // ionViewWillEnter() {//executed before is loaded
   //   console.log("ionViewWillEnter");

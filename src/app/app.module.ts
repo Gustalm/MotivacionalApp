@@ -13,6 +13,7 @@ import { QuotesPage } from "../pages/quotes/quotes";
 import { TabsPage } from "../pages/tabs/tabs";
 import { MaxLengthPipe } from "../pipes/maxlength.pipe";
 import { FavoriteQuotesService } from "../services/quote.service";
+import { SettingsService } from "../services/settings.service";
 
 @NgModule({
   declarations: [
@@ -37,13 +38,14 @@ import { FavoriteQuotesService } from "../services/quote.service";
     SettingsPage,
     QuotePage,
     QuotesPage,
-    TabsPage,
+    TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FavoriteQuotesService
+    FavoriteQuotesService,
+    SettingsService
   ]
 })
 export class AppModule {}
