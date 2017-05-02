@@ -8,9 +8,11 @@ import { SettingsService } from "../../services/settings.service";
 })
 export class SettingsPage {
   public canChangeBackground: boolean; 
+  
   constructor(public navCtrl: NavController, 
   public navParams: NavParams,
   private settingsService: SettingsService) {
+
   this.canChangeBackground = this.settingsService.getBackgroundCanChange();
   console.log("settings " + this.canChangeBackground);
   }

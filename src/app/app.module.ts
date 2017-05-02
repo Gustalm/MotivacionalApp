@@ -28,7 +28,11 @@ import { SettingsService } from "../services/settings.service";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      backButtonText: 'Voltar',
+      backButtonIcon: 'arrow-round-back'
+      // tabsPlacement: 'top'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,9 +47,9 @@ import { SettingsService } from "../services/settings.service";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     FavoriteQuotesService,
     SettingsService
   ]
 })
-export class AppModule {}
+export class AppModule { }

@@ -17,7 +17,9 @@
 <ion-content padding>
   <ion-list>
     <ion-item-sliding *ngFor="let quote of favoriteQuotes; let i = index;">
-      <ion-item (click)="onViewQuote(quote)" color='quoteBackground'>
+      <!--color='quoteBackground'
+      [ngClass]="{alt: changeBackground()" é uma opção para o setbackground.-->
+      <ion-item (click)="onViewQuote(quote)" [color]='setBackground()'>
         <h2> {{ quote.person }}</h2>
         <p> {{ quote.text }} </p>
       </ion-item>

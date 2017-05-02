@@ -23,7 +23,7 @@ export class FavoritesPage implements OnInit, OnDestroy {
     private menuCtrl: MenuController,
     private settingsService: SettingsService) {
   }
-  private changeBackground =  this.settingsService.getBackgroundCanChange();
+  // private changeBackground =  this.settingsService.getBackgroundCanChange();
 
   ngOnInit(): void {
     this.favoriteQuotes = this.favoriteQuoteService.getFavoriteQuotes();
@@ -31,8 +31,6 @@ export class FavoritesPage implements OnInit, OnDestroy {
     this.quoteSubscription = this.favoriteQuoteService.favoriteQuotesEmitter.subscribe((quotes: Quote[]) => {
       this.favoriteQuotes = quotes;
     })
-
-    console.log(this.changeBackground);
   }
 
   onViewQuote(quote: Quote) {
@@ -64,5 +62,9 @@ export class FavoritesPage implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.quoteSubscription.unsubscribe();
+  }
+
+  setBackground(){
+    return this.settingsService.getBackgroundCanChange() ? 'quoteBackground' : 'altQuoteBackground';
   }
 }

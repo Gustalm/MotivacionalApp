@@ -1,11 +1,7 @@
-
-
 export class SettingsService{
     private _canChangeBackground: boolean = false;
     
-    constructor(){
-
-    }
+    constructor(){ }
 
     setCanChangeBackGround(flag: boolean){
         this._canChangeBackground = flag;
